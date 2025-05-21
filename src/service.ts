@@ -138,6 +138,16 @@ export class DiscordService extends Service implements IDiscordService {
     return service;
   }
 
+  async sendDM(authorId, msg){
+    const u = await this.client.users.fetch(authorId)
+    if (!u) {
+      logger.warn('Discord - User not found', authorId)
+      return;
+    }
+    // are they already signed up?
+    u.send(msg)
+  }
+
   /**
    * Registers the send handler with the runtime.
    * @private
