@@ -191,6 +191,7 @@ export class MessageManager {
         metadata: {
           entityName: name,
           type: 'message',
+          authorId: message.author.id,
         },
         createdAt: message.createdTimestamp,
       };
